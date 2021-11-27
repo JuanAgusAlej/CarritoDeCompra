@@ -1,7 +1,7 @@
 
 
 let menu = function () {
-    let options = 1;
+    let opcion = 1
     let arreglo = []
 
     while (opcion != 5) {
@@ -13,7 +13,7 @@ let menu = function () {
                     arreglo.push(agregarProducto())
                 break
             case 2:
-
+                    eliminarProducto(arreglo)
                 break
             case 3:
 
@@ -34,4 +34,10 @@ let agregarProducto = function () {
     return prompt("Ingresar producto: ")
 }
 
-
+let eliminarProducto = function (arreglo) {
+    let producto = prompt(`Ingresar producto a eliminar`)
+    let buscar = true;
+    while (condition) {
+        
+    }
+}
