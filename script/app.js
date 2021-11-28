@@ -4,28 +4,31 @@ let menu = function () {
     let opcion = 1
     let arreglo = []
 
-    while (opcion != 5) {
+    while (opcion != 5 && opcion) {
         
         opcion = parseInt(prompt(`Ingrese una opcion: 1-agregar 2-eliminar producto 3-filtrat elemento 4-lista ordenada 5-Salir`))
-        
-        switch (opcion) {
-            case 1:
-                    arreglo.push(agregarProducto())
-                break
-            case 2:
-                    arreglo = eliminarProducto(arreglo)
-                break
-            case 3:
+        if(opcion){
+            switch (opcion) {
+                case 1:
+                        arreglo.push(agregarProducto())
+                    break
+                case 2:
+                        arreglo = eliminarProducto(arreglo)
+                    break
+                case 3:
 
-                break
-            case 4:
-
-                break
-            case 5:
-                return arreglo;
-            
-            default:
-                opcion = parseInt(prompt(`Ingrese una opcion: 1-agregar 2-eliminar producto 3-filtrat elemento 4-lista ordenada 5-Salir`))
+                    break
+                case 4:
+                    console.log(arreglo)
+                    arreglo = ordenarAlfabeto(arreglo)
+                    console.log(arreglo)
+                    break
+                case 5:
+                    return arreglo;
+                
+                default:
+                    opcion = parseInt(prompt(`Ingrese una opcion: 1-agregar 2-eliminar producto 3-filtrat elemento 4-lista ordenada 5-Salir`))
+            }
         }
     }
 }
@@ -49,4 +52,7 @@ let eliminarProducto = function (arreglo) {
     /*console.log(arreglo.indexOf(producto))
     arreglo.splice(arreglo.indexOf(producto), 1)*/
     return arreglo
+}
+let ordenarAlfabeto = function (arreglo) {
+    return arreglo.sort()
 }
