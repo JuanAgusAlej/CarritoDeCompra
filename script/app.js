@@ -13,7 +13,7 @@ let menu = function () {
                     arreglo.push(agregarProducto())
                 break
             case 2:
-                    eliminarProducto(arreglo)
+                    arreglo = eliminarProducto(arreglo)
                 break
             case 3:
 
@@ -37,7 +37,16 @@ let agregarProducto = function () {
 let eliminarProducto = function (arreglo) {
     let producto = prompt(`Ingresar producto a eliminar`)
     let buscar = true;
-    while (condition) {
-        
+    while (buscar) {
+        buscar = false;
+        if (arreglo.indexOf(producto)!=-1) {
+            arreglo.splice(arreglo.indexOf(producto), 1)
+         //   console.log("entro")
+            buscar = true;
+        }
+        //console.log("afuera")
     }
+    /*console.log(arreglo.indexOf(producto))
+    arreglo.splice(arreglo.indexOf(producto), 1)*/
+    return arreglo
 }
