@@ -1,8 +1,9 @@
 
 
-let menu = function () {
+const menu = function () {
     let opcion = 1
     let arreglo = []
+
 
     while (opcion != 5 && opcion) {
         
@@ -10,13 +11,17 @@ let menu = function () {
         if(opcion){
             switch (opcion) {
                 case 1:
-                        arreglo.push(agregarProducto())
+                    const producto = agregarProducto(arreglo) 
+                    if (producto != -1) {
+                        arreglo.push(producto)
+                    }
+                        
                     break
                 case 2:
                         arreglo = eliminarProducto(arreglo)
                     break
                 case 3:
-
+                        filtrarBusqueda(arreglo)
                     break
                 case 4:
                     console.log(arreglo)
@@ -33,26 +38,55 @@ let menu = function () {
     }
 }
 
-let agregarProducto = function () {
-    return prompt("Ingresar producto: ")
+const agregarProducto = function (lista) {
+
+    let agregar = prompt("Ingresar producto: ")
+    if (agregar) {
+        let busqueda = lista.find(function (objetos) {
+            return objetos.toUpperCase() === agregar.toUpperCase()
+        })
+        // console.log(busqueda)
+        if (busqueda) {
+            return -1
+     
+        } else {
+        
+            return agregar
+        }
+    }
+    
+    
 }
 
-let eliminarProducto = function (arreglo) {
-    let producto = prompt(`Ingresar producto a eliminar`)
-    let buscar = true;
-    while (buscar) {
-        buscar = false;
-        if (arreglo.indexOf(producto)!=-1) {
-            arreglo.splice(arreglo.indexOf(producto), 1)
-         //   console.log("entro")
-            buscar = true;
-        }
-        //console.log("afuera")
-    }
-    /*console.log(arreglo.indexOf(producto))
-    arreglo.splice(arreglo.indexOf(producto), 1)*/
-    return arreglo
+const eliminarProducto = function (arreglo) {
+    let producto = prompt(`Ingresar producto a eliminar`).toUpperCase()
+   if(producto){
+       arreglo.splice(arreglo.indexOf(producto), 1)
+       return arreglo
+   }
 }
-let ordenarAlfabeto = function (arreglo) {
+const ordenarAlfabeto = function (arreglo) {
     return arreglo.sort()
+}
+
+const filtrarBusqueda = function (lista) {
+    
+    let filtrar = prompt("Filtrar por producto: ")
+    if (filtrar) {
+        let filtro = lista.filter(function (producto) {
+            producto = producto.toUpperCase()
+            return producto.includes(filtrar.toUpperCase())
+        })
+        //console.log(filtro[0])
+        if (filtro[0] !== undefined) {
+    //        console.log("entro")
+            return console.log(filtro)
+        } else {
+      //      console.log("salio")
+            return console.log("No se encontro producto")
+        }
+
+    }
+    
+    
 }
